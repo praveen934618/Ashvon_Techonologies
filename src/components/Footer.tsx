@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 export function Footer() {
@@ -16,7 +16,7 @@ export function Footer() {
             />
             <div>
               <span className="footer-company-name">ASHVON TECHNOLOGIES</span>
-              <span className="footer-tagline">Learn â€¢ Build â€¢ Lead</span>
+              <span className="footer-tagline">Learn • Build • Lead</span>
             </div>
           </div>
           <p className="footer-mission-snippet">
@@ -90,10 +90,10 @@ export function Footer() {
       <div className="footer-bottom-bar">
         <div className="container footer-bottom-inner">
           <p className="copyright-text">
-            Â© {new Date().getFullYear()} ASHVON TECHNOLOGIES PVT LTD. All rights reserved.
+            © {new Date().getFullYear()} ASHVON TECHNOLOGIES PVT LTD. All rights reserved.
           </p>
           <div className="footer-sub-links">
-            <span>Strategic Thinking â€¢ Innovation â€¢ Practical Learning</span>
+            <span>Strategic Thinking • Innovation • Practical Learning</span>
           </div>
         </div>
       </div>

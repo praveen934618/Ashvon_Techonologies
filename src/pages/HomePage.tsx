@@ -54,7 +54,7 @@ export function HomePage() {
               </div>
               <div className="metric-divider" />
               <div className="metric-item">
-                <div className="metric-number">Grades 4â€“9</div>
+                <div className="metric-number">Grades 4–9</div>
                 <div className="metric-label">School STEM Labs</div>
               </div>
               <div className="metric-divider" />
@@ -162,7 +162,7 @@ export function HomePage() {
           <div className="story-preview-box">
             <div className="story-preview-text">
               <span className="preview-badge">The Ashvon Philosophy</span>
-              <h2 className="preview-title">Strategic Thinking â€¢ Innovation â€¢ Growth</h2>
+              <h2 className="preview-title">Strategic Thinking • Innovation • Growth</h2>
               <p className="preview-lead">
                 Inspired by the Chess Knight, Ashvon equips learners and organizations with the
                 critical ability to overcome obstacles, leap over conventional barriers, and master
@@ -187,7 +187,7 @@ export function HomePage() {
                 />
                 <div className="preview-promise">
                   <ShieldCheck size={16} className="text-cyan" />
-                  <span>â€œBecause Every Learner Matters.â€</span>
+                  <span>“Because Every Learner Matters.”</span>
                 </div>
               </div>
             </div>

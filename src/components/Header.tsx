@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { navLinks } from "../content";
@@ -41,7 +41,7 @@ export function Header() {
               <span className="brand-name">ASHVON</span>
               <span className="brand-pill">Pvt Ltd</span>
             </div>
-            <span className="brand-tagline">Learn â€¢ Build â€¢ Lead</span>
+            <span className="brand-tagline">Learn • Build • Lead</span>
           </div>
         </Link>
 

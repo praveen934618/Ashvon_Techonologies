@@ -87,7 +87,7 @@ export function AboutPage() {
               </div>
 
               <p className="chess-card-body">
-                The modern geometric <strong>â€œAâ€</strong> symbol represents technology,
+                The modern geometric <strong>“A”</strong> symbol represents technology,
                 intelligence, and upward progress. Centered within it is the{" "}
                 <strong>Chess Knight</strong>, symbolizing:
               </p>
@@ -118,7 +118,7 @@ export function AboutPage() {
 
               <div className="brand-promise-block">
                 <span>Our Brand Promise</span>
-                <strong>â€œBecause Every Learner Matters.â€</strong>
+                <strong>“Because Every Learner Matters.”</strong>
               </div>
             </div>
           </div>

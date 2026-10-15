@@ -1,4 +1,4 @@
-﻿import { useState, useRef, type MouseEvent } from "react";
+import { useState, useRef, type MouseEvent } from "react";
 import { Sparkles, Bot, ShieldCheck, Zap } from "lucide-react";
 
 export function Hero3DLogo() {
@@ -73,7 +73,7 @@ export function Hero3DLogo() {
             </div>
             <div>
               <div className="badge-tag">School STEM Labs</div>
-              <div className="badge-title">Grades 4â€“9 Robotics Kits</div>
+              <div className="badge-title">Grades 4–9 Robotics Kits</div>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export function Hero3DLogo() {
 
           <div className="badge-top-left-status">
             <span className="live-status-dot" />
-            <span>Phased Expansion â€¢ AP & TG</span>
+            <span>Phased Expansion • AP & TG</span>
           </div>
         </div>
       </div>
