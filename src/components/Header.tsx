@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { navLinks } from "../content";
@@ -27,7 +27,7 @@ export function Header() {
         <Link to="/" className="brand" aria-label="Ashvon Technologies - Home">
           <div className="brand-logo-wrap">
             <img
-              src="/ashvon-logo.png"
+              src={`${import.meta.env.BASE_URL}ashvon-logo.png`}
               alt="Ashvon Technologies 3D Logo"
               className="brand-logo-img"
               width="40"
@@ -41,7 +41,7 @@ export function Header() {
               <span className="brand-name">ASHVON</span>
               <span className="brand-pill">Pvt Ltd</span>
             </div>
-            <span className="brand-tagline">Learn • Build • Lead</span>
+            <span className="brand-tagline">Learn â€¢ Build â€¢ Lead</span>
           </div>
         </Link>
 
@@ -88,3 +88,4 @@ export function Header() {
     </header>
   );
 }
+

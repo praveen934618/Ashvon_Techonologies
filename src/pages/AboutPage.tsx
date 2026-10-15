@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   Compass,
@@ -74,7 +74,7 @@ export function AboutPage() {
             <div className="chess-detail-card">
               <div className="chess-card-header">
                 <img
-                  src="/ashvon-logo.png"
+                  src={`${import.meta.env.BASE_URL}ashvon-logo.png`}
                   alt="Ashvon 3D Emblem"
                   className="chess-card-logo"
                   width="70"
@@ -87,7 +87,7 @@ export function AboutPage() {
               </div>
 
               <p className="chess-card-body">
-                The modern geometric <strong>“A”</strong> symbol represents technology,
+                The modern geometric <strong>â€œAâ€</strong> symbol represents technology,
                 intelligence, and upward progress. Centered within it is the{" "}
                 <strong>Chess Knight</strong>, symbolizing:
               </p>
@@ -118,7 +118,7 @@ export function AboutPage() {
 
               <div className="brand-promise-block">
                 <span>Our Brand Promise</span>
-                <strong>“Because Every Learner Matters.”</strong>
+                <strong>â€œBecause Every Learner Matters.â€</strong>
               </div>
             </div>
           </div>
@@ -229,3 +229,4 @@ export function AboutPage() {
     </div>
   );
 }
+
