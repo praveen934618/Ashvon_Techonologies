@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import GradientWaves from "../components/GradientWaves";
 import {
   Sparkles,
   ArrowRight,
@@ -20,7 +21,26 @@ export function HomePage() {
   return (
     <div className="page-wrapper">
       {/* HERO SECTION */}
-      <section className="hero-section" aria-labelledby="hero-title">
+      <section
+        className="hero-section hero-gradient-waves"
+        aria-labelledby="hero-title"
+      >
+        <div className="hero-waves-background" aria-hidden="true">
+          <GradientWaves
+            horizonColor="#5227FF"
+            waveColor="#00D9FF"
+            crestColor="#FFFFFF"
+            backgroundColor="transparent"
+            speed={0.25}
+            amplitude={2.5}
+            brightness={0.8}
+            opacity={0.65}
+            quality="medium"
+            mouseInteraction={true}
+            swellOnClick={false}
+            dpr={1.5}
+          />
+        </div>
         <BannerWatermark />
         <div className="container hero-grid">
           <div className="hero-content">

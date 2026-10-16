@@ -8,6 +8,7 @@ import { DivisionsPage } from "./pages/DivisionsPage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { SchoolsPage } from "./pages/SchoolsPage";
 import { ContactPage } from "./pages/ContactPage";
+import GradientWaves from './components/GradientWaves';
 
 /**
  * Render the shared site layout and routes under the configured base URL.
