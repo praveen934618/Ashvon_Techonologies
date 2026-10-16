@@ -18,6 +18,10 @@ const audienceIcons = {
   "business-institutions": Building2,
 };
 
+/**
+ * Render institutional lab offerings, implementation steps, and audience details.
+ * @returns {React.JSX.Element}
+ */
 export function SchoolsPage() {
   return (
     <div className="page-wrapper">
@@ -120,7 +124,7 @@ export function SchoolsPage() {
 
           <div className="audience-grid">
             {audiences.map((group) => {
-              const IconComp = audienceIcons[group.id as keyof typeof audienceIcons] || GraduationCap;
+              const IconComp = audienceIcons[group.id] || GraduationCap;
               return (
                 <div className="card audience-card" key={group.id}>
                   <div className="audience-card-top">

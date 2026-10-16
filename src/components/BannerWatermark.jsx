@@ -1,4 +1,8 @@
-﻿export function BannerWatermark() {
+/**
+ * Render decorative banner logos hidden from assistive technology.
+ * @returns {React.JSX.Element}
+ */
+export function BannerWatermark() {
   return (
     <div className="banner-watermark-wrapper" aria-hidden="true">
       <div className="banner-watermark-logo banner-watermark-left">
@@ -20,4 +24,3 @@
     </div>
   );
 }
-

@@ -1,29 +1,13 @@
-export interface NavLink {
-  href: string;
-  label: string;
-}
-
-export const navLinks: NavLink[] = [
+export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/divisions", label: "Divisions" },
+  { href: "/services", label: "IT Services" },
   { href: "/schools", label: "School Labs" },
   { href: "/contact", label: "Contact" },
 ];
 
-export interface Division {
-  id: string;
-  badge: string;
-  title: string;
-  tagline: string;
-  description: string;
-  iconName: string;
-  features: string[];
-  audience: string;
-  deliverable: string;
-}
-
-export const divisions: Division[] = [
+export const divisions = [
   {
     id: "division-a",
     badge: "Division A",
@@ -118,17 +102,7 @@ export const divisions: Division[] = [
   },
 ];
 
-export interface AudienceGroup {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  iconName: string;
-  points: string[];
-  ctaText: string;
-}
-
-export const audiences: AudienceGroup[] = [
+export const audiences = [
   {
     id: "school-education",
     title: "School Education",
@@ -264,6 +238,34 @@ export const implementationSteps = [
   },
 ];
 
+export const itDeliveryLifecycle = [
+  {
+    step: "01",
+    title: "Discovery & Architecture Blueprint",
+    desc: "We analyze your operational workflows, user journeys, technical constraints, and data models to formulate a clear software blueprint.",
+  },
+  {
+    step: "02",
+    title: "Rapid Prototyping & Design Systems",
+    desc: "We craft interactive wireframes, accessible component libraries, and interface prototypes to align stakeholders before writing code.",
+  },
+  {
+    step: "03",
+    title: "Agile Sprint Engineering",
+    desc: "Our engineering team develops modular, clean, well-tested code in iterative weekly sprints with continuous integration and staging reviews.",
+  },
+  {
+    step: "04",
+    title: "Quality Assurance & Security Audits",
+    desc: "Rigorous cross-browser testing, automated testing, WCAG accessibility validation, and vulnerability auditing ensure production reliability.",
+  },
+  {
+    step: "05",
+    title: "Production Deployment & Lifecycle SLA",
+    desc: "Seamless rollout with cloud orchestration, uptime monitoring, documentation handover, and ongoing maintenance support.",
+  },
+];
+
 export const faqs = [
   {
     q: "How does Ashvon Technologies help schools with AI and Robotics?",
@@ -292,5 +294,68 @@ export const faqs = [
   {
     q: "What does the chess knight in the Ashvon logo symbolize?",
     a: "The chess knight represents Strategic Thinking, Intellectual Agility, and Forward Vision. Just as the knight moves dynamically to overcome obstacles on the board, Ashvon empowers students and clients to think critically and navigate complex technological futures.",
+  },
+];
+
+export const itServicesOfferings = [
+  {
+    id: "web-applications",
+    title: "Modern Web Applications & Portals",
+    tagline: "High-performance responsive web platforms and applications",
+    description:
+      "Engineering robust, scalable web applications using React, TypeScript, and modern component architectures. Built for speed, responsiveness, and seamless user experiences across devices.",
+    iconName: "Code2",
+    capabilities: [
+      "Responsive Single Page & Server-Rendered Applications",
+      "Institutional and Campus Management Portals",
+      "High-speed API integration and secure data handling",
+      "Performance optimization and mobile responsiveness",
+    ],
+    deliverable: "Production-ready Web Platforms & Source Code",
+  },
+  {
+    id: "ai-automation",
+    title: "Enterprise AI Integration & Workflow Automation",
+    tagline: "Intelligent automations and generative AI workflows",
+    description:
+      "Integrating cutting-edge artificial intelligence models, custom workflow automations, and intelligent document processing to streamline institutional and business operations.",
+    iconName: "Cpu",
+    capabilities: [
+      "Custom AI model integration & generative workflows",
+      "Automated document processing & data pipelines",
+      "Workflow automation for administrative and operational tasks",
+      "AI-assisted knowledge retrieval and search systems",
+    ],
+    deliverable: "Automated AI Pipelines & System Integration",
+  },
+  {
+    id: "ui-ux-design",
+    title: "UI/UX Design & Design Systems",
+    tagline: "Human-centered design systems and digital prototypes",
+    description:
+      "Crafting intuitive user interfaces, cohesive design systems, and accessible digital prototypes that elevate brand perception and user engagement.",
+    iconName: "Layers",
+    capabilities: [
+      "Modular design systems & component libraries",
+      "Interactive wireframes and high-fidelity prototypes",
+      "Accessibility (WCAG compliance) audits & remediation",
+      "User journey mapping and information architecture",
+    ],
+    deliverable: "Design Systems, Figma Prototypes & UI Assets",
+  },
+  {
+    id: "data-analytics",
+    title: "Data Analytics & Real-Time Dashboards",
+    tagline: "Executive reporting and telemetry visualization",
+    description:
+      "Building real-time dashboards and data analytics pipelines that transform complex operational data into actionable visual insights for leadership and stakeholders.",
+    iconName: "Database",
+    capabilities: [
+      "Interactive executive dashboards and reporting modules",
+      "Telemetry and metrics visualization pipelines",
+      "Data structuring and secure storage architectures",
+      "Customized metric tracking for institutional progress",
+    ],
+    deliverable: "Analytics Dashboards & Reporting Portals",
   },
 ];

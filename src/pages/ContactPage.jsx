@@ -3,6 +3,10 @@ import { EnquiryForm } from "../components/EnquiryForm";
 import { faqs } from "../content";
 import { BannerWatermark } from "../components/BannerWatermark";
 
+/**
+ * Render consultation information, the enquiry form, and frequently asked questions.
+ * @returns {React.JSX.Element}
+ */
 export function ContactPage() {
   return (
     <div className="page-wrapper">

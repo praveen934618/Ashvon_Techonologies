@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   Bot,
   Cpu,
@@ -21,9 +21,48 @@ const divisionIcons = {
   "division-e": Users,
 };
 
+const hashToIdMap = {
+  "#div-a": "division-a",
+  "#division-a": "division-a",
+  "#div-b": "division-b",
+  "#division-b": "division-b",
+  "#div-c": "division-c",
+  "#division-c": "division-c",
+  "#div-d": "division-d",
+  "#division-d": "division-d",
+  "#div-e": "division-e",
+  "#division-e": "division-e",
+};
+
+/**
+ * Render division tabs with an initial selection derived from the URL hash.
+ * @returns {React.JSX.Element}
+ */
 export function DivisionsPage() {
-  const [selectedId, setSelectedId] = useState(divisions[0].id);
+  const location = useLocation();
+  const hashTargetId = location.hash && hashToIdMap[location.hash];
+  const [userSelectedId, setUserSelectedId] = useState(null);
+  const [prevHash, setPrevHash] = useState(location.hash);
+
+  if (prevHash !== location.hash) {
+    setPrevHash(location.hash);
+    setUserSelectedId(null);
+  }
+
+  // Active division derived reactively
+  const selectedId = userSelectedId || hashTargetId || divisions[0].id;
   const activeDiv = divisions.find((d) => d.id === selectedId) || divisions[0];
+
+  // Scroll to panel when arriving with a hash, respecting reduced motion
+  useEffect(() => {
+    if (location.hash && hashToIdMap[location.hash]) {
+      const el = document.getElementById("division-details-panel");
+      if (el) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        el.scrollIntoView({ behavior: prefersReducedMotion ? "instant" : "smooth" });
+      }
+    }
+  }, [location.hash]);
 
   return (
     <div className="page-wrapper">
@@ -42,27 +81,24 @@ export function DivisionsPage() {
         </div>
       </section>
 
-      {/* TOP DIVISION SELECTOR CARDS (MOVED UP, STRIP REMOVED) */}
+      {/* TOP DIVISION SELECTOR CARDS */}
       <section className="section section-divisions-showcase">
         <div className="container">
           {/* Top 5 Division Selector Cards */}
           <div className="divisions-top-selector-grid" role="tablist" aria-label="Select Division">
             {divisions.map((div) => {
-              const IconComp = divisionIcons[div.id as keyof typeof divisionIcons] || Bot;
+              const IconComp = divisionIcons[div.id] || Bot;
               const isSelected = div.id === selectedId;
               return (
-                <div
+                <button
                   key={div.id}
+                  type="button"
                   role="tab"
-                  tabIndex={0}
+                  id={`tab-${div.id}`}
                   aria-selected={isSelected}
+                  aria-controls="division-details-panel"
                   className={`division-selector-card ${isSelected ? "is-selected" : ""}`}
-                  onClick={() => setSelectedId(div.id)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      setSelectedId(div.id);
-                    }
-                  }}
+                  onClick={() => setUserSelectedId(div.id)}
                 >
                   <div className="selector-icon-wrap">
                     <IconComp size={20} />
@@ -77,13 +113,19 @@ export function DivisionsPage() {
                       <span className="click-tag">Click to View Details →</span>
                     )}
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>
 
-          {/* ACTIVE DIVISION DETAILED PANEL (CHANGES BASED ON CLICKED TOP CARD) */}
-          <div className="division-panel-card" key={activeDiv.id}>
+          {/* ACTIVE DIVISION DETAILED PANEL */}
+          <div
+            id="division-details-panel"
+            role="tabpanel"
+            aria-labelledby={`tab-${activeDiv.id}`}
+            className="division-panel-card"
+            key={activeDiv.id}
+          >
             <div className="division-panel-header">
               <span className="division-badge-pill">{activeDiv.badge}</span>
               <h2 className="division-title">{activeDiv.title}</h2>
