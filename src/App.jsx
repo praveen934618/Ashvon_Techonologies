@@ -9,6 +9,10 @@ import { ServicesPage } from "./pages/ServicesPage";
 import { SchoolsPage } from "./pages/SchoolsPage";
 import { ContactPage } from "./pages/ContactPage";
 
+/**
+ * Render the shared site layout and routes under the configured base URL.
+ * @returns {React.JSX.Element}
+ */
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>

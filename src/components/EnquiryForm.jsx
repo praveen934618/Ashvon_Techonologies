@@ -12,6 +12,11 @@ const initialFields = {
   message: "",
 };
 
+/**
+ * Check required enquiry fields and return error messages keyed by field name.
+ * @param {Object<string, string>} fields - Current enquiry field values.
+ * @returns {Object<string, string>} Validation errors, or an empty object if valid.
+ */
 function validate(fields) {
   const errors = {};
   if (fields.name.trim().length < 2) {
@@ -32,12 +37,22 @@ function validate(fields) {
   return errors;
 }
 
+/**
+ * Render an enquiry form with field validation and a simulated submission flow.
+ * @returns {React.JSX.Element}
+ */
 export function EnquiryForm() {
   const [fields, setFields] = useState(initialFields);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  /**
+   * Update a field value and clear its existing validation error.
+   * @param {string} key - Name of the enquiry field to update.
+   * @param {string} value - New field value.
+   * @returns {void}
+   */
   function update(key, value) {
     setFields((current) => ({ ...current, [key]: value }));
     if (errors[key]) {
@@ -49,6 +64,11 @@ export function EnquiryForm() {
     }
   }
 
+  /**
+   * Prevent native submission, validate fields, and simulate a successful response.
+   * @param {import("react").FormEvent<HTMLFormElement>} event - Form submission event.
+   * @returns {void}
+   */
   function handleSubmit(event) {
     event.preventDefault();
     const nextErrors = validate(fields);

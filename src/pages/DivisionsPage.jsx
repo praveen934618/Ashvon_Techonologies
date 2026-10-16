@@ -34,6 +34,10 @@ const hashToIdMap = {
   "#division-e": "division-e",
 };
 
+/**
+ * Render division tabs with an initial selection derived from the URL hash.
+ * @returns {React.JSX.Element}
+ */
 export function DivisionsPage() {
   const location = useLocation();
   const hashTargetId = location.hash && hashToIdMap[location.hash];

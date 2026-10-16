@@ -20,6 +20,10 @@ const serviceIcons = {
   "data-analytics": Database,
 };
 
+/**
+ * Render IT service offerings, engineering standards, and delivery stages.
+ * @returns {React.JSX.Element}
+ */
 export function ServicesPage() {
   return (
     <div className="page-wrapper">

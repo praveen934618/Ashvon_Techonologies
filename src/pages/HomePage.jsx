@@ -12,6 +12,10 @@ import {
 import { Hero3DLogo } from "../components/Hero3DLogo";
 import { BannerWatermark } from "../components/BannerWatermark";
 
+/**
+ * Render the homepage introducing education programs and IT services.
+ * @returns {React.JSX.Element}
+ */
 export function HomePage() {
   return (
     <div className="page-wrapper">

@@ -23,6 +23,10 @@ const valueIcons = {
   "Growth & Impact": TrendingUp,
 };
 
+/**
+ * Render the company story, core values, and geographic expansion roadmap.
+ * @returns {React.JSX.Element}
+ */
 export function AboutPage() {
   return (
     <div className="page-wrapper">

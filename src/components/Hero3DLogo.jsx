@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { Sparkles, Bot, ShieldCheck, Zap } from "lucide-react";
 
+/**
+ * Render the hero logo with pointer tilt when hover and motion preferences allow.
+ * @returns {React.JSX.Element}
+ */
 export function Hero3DLogo() {
   const cardRef = useRef(null);
   const [rotateX, setRotateX] = useState(0);

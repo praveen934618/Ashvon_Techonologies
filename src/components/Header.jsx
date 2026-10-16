@@ -3,6 +3,10 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { navLinks } from "../content";
 
+/**
+ * Render site navigation with a collapsible mobile menu and scroll styling.
+ * @returns {React.JSX.Element}
+ */
 export function Header() {
   const location = useLocation();
   const [open, setOpen] = useState(false);

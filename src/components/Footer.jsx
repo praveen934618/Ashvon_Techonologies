@@ -3,6 +3,10 @@ import { ArrowRight } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 
+/**
+ * Render company information, navigation links, and the current copyright year.
+ * @returns {React.JSX.Element}
+ */
 export function Footer() {
   return (
     <footer className="site-footer">
