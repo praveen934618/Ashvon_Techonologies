@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
+const currentYear = new Date().getFullYear();
+
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -9,10 +11,10 @@ export function Footer() {
           <div className="footer-brand-header">
             <img
               src={`${import.meta.env.BASE_URL}ashvon-logo.png`}
-              alt="Ashvon Logo"
+              alt="Ashvon Technologies Emblem"
               className="footer-logo-img"
-              width="42"
-              height="36"
+              width="44"
+              height="38"
             />
             <div>
               <span className="footer-company-name">ASHVON TECHNOLOGIES</span>
@@ -22,7 +24,7 @@ export function Footer() {
           <p className="footer-mission-snippet">
             Bridging practical technology education and industry-standard IT solutions. Empowering
             schools, colleges, and enterprises with hands-on robotics, AI training, and custom
-            software.
+            software engineering.
           </p>
           <div className="footer-promise-tag">
             Brand Promise: <em>Because Every Learner Matters.</em>
@@ -40,6 +42,9 @@ export function Footer() {
             </li>
             <li>
               <Link to="/divisions">5 Specialized Divisions</Link>
+            </li>
+            <li>
+              <Link to="/services">IT &amp; Software Services</Link>
             </li>
             <li>
               <Link to="/schools">School &amp; College Labs</Link>
@@ -90,7 +95,7 @@ export function Footer() {
       <div className="footer-bottom-bar">
         <div className="container footer-bottom-inner">
           <p className="copyright-text">
-            © {new Date().getFullYear()} ASHVON TECHNOLOGIES PVT LTD. All rights reserved.
+            © {currentYear} ASHVON TECHNOLOGIES PVT LTD. All rights reserved.
           </p>
           <div className="footer-sub-links">
             <span>Strategic Thinking • Innovation • Practical Learning</span>
@@ -100,4 +105,3 @@ export function Footer() {
     </footer>
   );
 }
-

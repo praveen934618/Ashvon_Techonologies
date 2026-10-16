@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   Compass,
@@ -171,7 +171,7 @@ export function AboutPage() {
 
           <div className="values-grid">
             {coreValues.map((val) => {
-              const IconComp = valueIcons[val.title as keyof typeof valueIcons] || Lightbulb;
+              const IconComp = valueIcons[val.title] || Lightbulb;
               return (
                 <div className="card value-card" key={val.title}>
                   <div className="value-icon-box">
@@ -229,4 +229,3 @@ export function AboutPage() {
     </div>
   );
 }
-

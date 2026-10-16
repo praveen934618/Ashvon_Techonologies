@@ -1,4 +1,4 @@
-﻿export function BannerWatermark() {
+export function BannerWatermark() {
   return (
     <div className="banner-watermark-wrapper" aria-hidden="true">
       <div className="banner-watermark-logo banner-watermark-left">
@@ -20,4 +20,3 @@
     </div>
   );
 }
-

@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { navLinks } from "../content";
 
 export function Header() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  const navRef = useRef(null);
 
-  useEffect(() => {
+  // Close mobile menu on route change
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
     setOpen(false);
-  }, [location.pathname]);
+  }
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 15);
@@ -20,18 +25,39 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle Escape key and body scroll lock when mobile menu is open
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
+
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="container header-inner">
         {/* Brand Left Top */}
-        <Link to="/" className="brand" aria-label="Ashvon Technologies - Home">
+        <Link to="/" className="brand" aria-label="Ashvon Technologies - Home" onClick={() => setOpen(false)}>
           <div className="brand-logo-wrap">
             <img
               src={`${import.meta.env.BASE_URL}ashvon-logo.png`}
-              alt="Ashvon Technologies 3D Logo"
+              alt="Ashvon Technologies Emblem"
               className="brand-logo-img"
-              width="40"
-              height="36"
+              width="42"
+              height="38"
               loading="eager"
             />
             <div className="logo-glow" aria-hidden="true" />
@@ -51,15 +77,25 @@ export function Header() {
           className="nav-toggle"
           aria-expanded={open}
           aria-controls="site-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
+
+        {/* Backdrop for mobile drawer */}
+        {open && (
+          <div
+            className="mobile-backdrop"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+        )}
 
         {/* Navigation panel */}
         <nav
           id="site-nav"
+          ref={navRef}
           className={`nav-panel ${open ? "is-open" : ""}`}
           aria-label="Primary Navigation"
         >
@@ -68,6 +104,7 @@ export function Header() {
               <NavLink
                 key={link.href}
                 to={link.href}
+                onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `nav-link ${isActive ? "is-current" : ""}`
                 }
@@ -78,7 +115,11 @@ export function Header() {
           </div>
 
           <div className="nav-actions">
-            <Link to="/contact" className="btn btn-royal-glow nav-cta">
+            <Link
+              to="/contact"
+              className="btn btn-royal-glow nav-cta"
+              onClick={() => setOpen(false)}
+            >
               <span>Enquire Now</span>
               <ArrowRight size={14} />
             </Link>
@@ -88,4 +129,3 @@ export function Header() {
     </header>
   );
 }
-

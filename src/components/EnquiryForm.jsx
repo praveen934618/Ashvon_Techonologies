@@ -1,20 +1,7 @@
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Building, Mail, Phone, MapPin, Sparkles } from "lucide-react";
 
-export interface EnquiryFields {
-  name: string;
-  email: string;
-  phone: string;
-  organisation: string;
-  location: string;
-  role: string;
-  interest: string;
-  message: string;
-}
-
-type Errors = Partial<Record<keyof EnquiryFields, string>>;
-
-const initialFields: EnquiryFields = {
+const initialFields = {
   name: "",
   email: "",
   phone: "",
@@ -25,8 +12,8 @@ const initialFields: EnquiryFields = {
   message: "",
 };
 
-function validate(fields: EnquiryFields): Errors {
-  const errors: Errors = {};
+function validate(fields) {
+  const errors = {};
   if (fields.name.trim().length < 2) {
     errors.name = "Please enter your full name.";
   }
@@ -46,12 +33,12 @@ function validate(fields: EnquiryFields): Errors {
 }
 
 export function EnquiryForm() {
-  const [fields, setFields] = useState<EnquiryFields>(initialFields);
-  const [errors, setErrors] = useState<Errors>({});
+  const [fields, setFields] = useState(initialFields);
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  function update(key: keyof EnquiryFields, value: string) {
+  function update(key, value) {
     setFields((current) => ({ ...current, [key]: value }));
     if (errors[key]) {
       setErrors((prev) => {
@@ -62,7 +49,7 @@ export function EnquiryForm() {
     }
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event) {
     event.preventDefault();
     const nextErrors = validate(fields);
     setErrors(nextErrors);
@@ -80,7 +67,7 @@ export function EnquiryForm() {
 
   if (submitted) {
     return (
-      <div className="card enquiry-success-card">
+      <div className="card enquiry-success-card" role="region" aria-live="polite">
         <div className="success-icon-wrap">
           <CheckCircle2 size={48} className="text-royal-blue" />
         </div>
@@ -122,9 +109,12 @@ export function EnquiryForm() {
       </div>
 
       <div className="form-grid-2">
-        <label className="field-group">
-          <span className="field-label">Full Name *</span>
+        <div className="field-group">
+          <label htmlFor="enquiry-name" className="field-label">
+            Full Name *
+          </label>
           <input
+            id="enquiry-name"
             type="text"
             name="name"
             placeholder="e.g. Dr. Ramesh Kumar"
@@ -136,17 +126,20 @@ export function EnquiryForm() {
             className={errors.name ? "input-error" : ""}
           />
           {errors.name && (
-            <span id="name-error" className="field-error">
+            <span id="name-error" className="field-error" role="alert">
               <AlertCircle size={14} /> {errors.name}
             </span>
           )}
-        </label>
+        </div>
 
-        <label className="field-group">
-          <span className="field-label">Phone Number *</span>
+        <div className="field-group">
+          <label htmlFor="enquiry-phone" className="field-label">
+            Phone Number *
+          </label>
           <div className="input-with-icon">
-            <Phone size={16} className="input-icon" />
+            <Phone size={16} className="input-icon" aria-hidden="true" />
             <input
+              id="enquiry-phone"
               type="tel"
               name="phone"
               placeholder="+91 98765 43210"
@@ -159,19 +152,22 @@ export function EnquiryForm() {
             />
           </div>
           {errors.phone && (
-            <span id="phone-error" className="field-error">
+            <span id="phone-error" className="field-error" role="alert">
               <AlertCircle size={14} /> {errors.phone}
             </span>
           )}
-        </label>
+        </div>
       </div>
 
       <div className="form-grid-2">
-        <label className="field-group">
-          <span className="field-label">Work / Institutional Email *</span>
+        <div className="field-group">
+          <label htmlFor="enquiry-email" className="field-label">
+            Work / Institutional Email *
+          </label>
           <div className="input-with-icon">
-            <Mail size={16} className="input-icon" />
+            <Mail size={16} className="input-icon" aria-hidden="true" />
             <input
+              id="enquiry-email"
               type="email"
               name="email"
               placeholder="principal@yourschool.edu.in"
@@ -184,17 +180,20 @@ export function EnquiryForm() {
             />
           </div>
           {errors.email && (
-            <span id="email-error" className="field-error">
+            <span id="email-error" className="field-error" role="alert">
               <AlertCircle size={14} /> {errors.email}
             </span>
           )}
-        </label>
+        </div>
 
-        <label className="field-group">
-          <span className="field-label">School / Institution Name *</span>
+        <div className="field-group">
+          <label htmlFor="enquiry-org" className="field-label">
+            School / Institution Name *
+          </label>
           <div className="input-with-icon">
-            <Building size={16} className="input-icon" />
+            <Building size={16} className="input-icon" aria-hidden="true" />
             <input
+              id="enquiry-org"
               type="text"
               name="organisation"
               placeholder="e.g. Hyderabad Public School"
@@ -207,19 +206,22 @@ export function EnquiryForm() {
             />
           </div>
           {errors.organisation && (
-            <span id="org-error" className="field-error">
+            <span id="org-error" className="field-error" role="alert">
               <AlertCircle size={14} /> {errors.organisation}
             </span>
           )}
-        </label>
+        </div>
       </div>
 
       <div className="form-grid-2">
-        <label className="field-group">
-          <span className="field-label">Primary Region / State</span>
+        <div className="field-group">
+          <label htmlFor="enquiry-location" className="field-label">
+            Primary Region / State
+          </label>
           <div className="input-with-icon">
-            <MapPin size={16} className="input-icon" />
+            <MapPin size={16} className="input-icon" aria-hidden="true" />
             <select
+              id="enquiry-location"
               name="location"
               value={fields.location}
               onChange={(e) => update("location", e.target.value)}
@@ -231,11 +233,14 @@ export function EnquiryForm() {
               <option value="Other Pan-India Location">Other Pan-India Location</option>
             </select>
           </div>
-        </label>
+        </div>
 
-        <label className="field-group">
-          <span className="field-label">Your Role</span>
+        <div className="field-group">
+          <label htmlFor="enquiry-role" className="field-label">
+            Your Role
+          </label>
           <select
+            id="enquiry-role"
             name="role"
             value={fields.role}
             onChange={(e) => update("role", e.target.value)}
@@ -248,12 +253,15 @@ export function EnquiryForm() {
             <option value="Business Executive / Startup Founder">Business Executive / Startup Founder</option>
             <option value="Other Partner / Investor">Other Partner / Investor</option>
           </select>
-        </label>
+        </div>
       </div>
 
-      <label className="field-group">
-        <span className="field-label">Division / Area of Interest</span>
+      <div className="field-group">
+        <label htmlFor="enquiry-interest" className="field-label">
+          Division / Area of Interest
+        </label>
         <select
+          id="enquiry-interest"
           name="interest"
           value={fields.interest}
           onChange={(e) => update("interest", e.target.value)}
@@ -274,11 +282,14 @@ export function EnquiryForm() {
             Division E – Faculty Network, School Hackathons & Innovation Contests
           </option>
         </select>
-      </label>
+      </div>
 
-      <label className="field-group">
-        <span className="field-label">Tell Us About Your Requirements *</span>
+      <div className="field-group">
+        <label htmlFor="enquiry-message" className="field-label">
+          Tell Us About Your Requirements *
+        </label>
         <textarea
+          id="enquiry-message"
           name="message"
           rows={3}
           placeholder="Please share your estimated student strength, target grades, existing lab setup, or specific software objectives..."
@@ -289,11 +300,11 @@ export function EnquiryForm() {
           className={errors.message ? "input-error" : ""}
         />
         {errors.message && (
-          <span id="message-error" className="field-error">
+          <span id="message-error" className="field-error" role="alert">
             <AlertCircle size={14} /> {errors.message}
           </span>
         )}
-      </label>
+      </div>
 
       <button className="btn btn-royal-glow btn-submit" type="submit" disabled={submitting}>
         {submitting ? (

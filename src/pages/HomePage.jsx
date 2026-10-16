@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Sparkles,
   ArrowRight,
@@ -147,7 +147,7 @@ export function HomePage() {
                 <li><CheckCircle2 size={16} className="text-cyan" /> Workflow AI Integration</li>
                 <li><CheckCircle2 size={16} className="text-cyan" /> Technology Consulting</li>
               </ul>
-              <Link to="/divisions" className="pillar-link">
+              <Link to="/services" className="pillar-link">
                 <span>View IT Services</span>
                 <ArrowRight size={14} />
               </Link>
@@ -216,4 +216,3 @@ export function HomePage() {
     </div>
   );
 }
-
