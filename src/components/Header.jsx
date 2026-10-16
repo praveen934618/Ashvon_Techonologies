@@ -31,6 +31,7 @@ export function Header() {
 
   // Handle Escape key and body scroll lock when mobile menu is open
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && open) {
         setOpen(false);
@@ -41,11 +42,11 @@ export function Header() {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     }
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);

@@ -42,17 +42,24 @@ export function DivisionsPage() {
   const location = useLocation();
   const hashTargetId = location.hash && hashToIdMap[location.hash];
   const [userSelectedId, setUserSelectedId] = useState(null);
+  const [prevHash, setPrevHash] = useState(location.hash);
+
+  if (prevHash !== location.hash) {
+    setPrevHash(location.hash);
+    setUserSelectedId(null);
+  }
 
   // Active division derived reactively
   const selectedId = userSelectedId || hashTargetId || divisions[0].id;
   const activeDiv = divisions.find((d) => d.id === selectedId) || divisions[0];
 
-  // Smooth scroll to panel when arriving with a hash
+  // Scroll to panel when arriving with a hash, respecting reduced motion
   useEffect(() => {
     if (location.hash && hashToIdMap[location.hash]) {
       const el = document.getElementById("division-details-panel");
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        el.scrollIntoView({ behavior: prefersReducedMotion ? "instant" : "smooth" });
       }
     }
   }, [location.hash]);
@@ -89,7 +96,7 @@ export function DivisionsPage() {
                   role="tab"
                   id={`tab-${div.id}`}
                   aria-selected={isSelected}
-                  aria-controls={`panel-${div.id}`}
+                  aria-controls="division-details-panel"
                   className={`division-selector-card ${isSelected ? "is-selected" : ""}`}
                   onClick={() => setUserSelectedId(div.id)}
                 >
